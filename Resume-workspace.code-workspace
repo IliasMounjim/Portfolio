@@ -1,0 +1,19 @@
+{
+    "folders": [
+		{
+			"path": "../../../../../Users/eli/Downloads/dominic"
+		},
+		{
+			"path": "../../../../../Users/eli/Downloads/virtual-folio"
+		},
+		{
+			"path": "../../../../../Users/eli/Downloads/univers"
+		},
+		{
+			"path": "."
+		}
+	],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "virtual-folio"
+    }
+}
