@@ -334,26 +334,42 @@
         }
 
         @media (max-width: 768px) {
-            .profile-image, .profile-placeholder { width: 120px; height: 150px; border-radius: 16px; }
-            .profile-placeholder { font-size: 2.5rem; }
+            /* 1. Smaller photo */
+            .profile-image, .profile-placeholder { width: 110px; height: 138px; border-radius: 14px; }
+            .profile-placeholder { font-size: 2rem; }
+            /* 2-3. Tight hero grid, no gaps */
             .hero-grid { flex-direction: column; align-items: center; text-align: center; gap: 0 !important; }
             .hero-grid > div:first-child { order: 2; }
-            .hero-grid > div:last-child { order: 1; margin-bottom: 0.75rem; }
+            .hero-grid > div:last-child { order: 1; margin-bottom: 0.4rem; }
             .hero-grid .flex-wrap { justify-content: center; }
-            .hero-grid .hero-socials { justify-content: center; margin-bottom: 1rem !important; }
-            .hero-grid p { margin-left: auto; margin-right: auto; font-size: 0.9rem !important; margin-bottom: 1rem !important; line-height: 1.5 !important; }
-            .hero-badges-row { gap: 6px !important; margin-bottom: 0.5rem !important; }
-            .hero-badge, .status-indicator { font-size: 0.65rem !important; padding: 4px 10px !important; }
-            .hero-badge svg { width: 10px; height: 10px; }
-            .hero-title { font-size: 2rem !important; margin-bottom: 0 !important; }
-            .hero-rotating-wrap { font-size: 1.3rem !important; height: 1.3em !important; margin-bottom: 0.5rem !important; }
-            .hero-cta-row { gap: 8px !important; margin-bottom: 0.75rem !important; }
-            .hero-cta-row .btn-primary, .hero-cta-row .btn-outline, .hero-cta-row .btn-resume { padding: 8px 16px !important; font-size: 0.8rem !important; }
-            .hero-stats-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0.75rem !important; justify-items: center; }
-            .hero-stats-grid .stat-number { font-size: 1.5rem !important; }
-            .hero-stats-grid .text-xs { font-size: 0.6rem !important; }
+            /* 4. Compact bio */
+            .hero-grid p.text-lg { margin-left: auto; margin-right: auto; font-size: 0.82rem !important; margin-bottom: 0.6rem !important; line-height: 1.45 !important; max-width: 340px !important; }
+            /* 2. Badges tight under photo */
+            .hero-badges-row { gap: 6px !important; margin-bottom: 0.25rem !important; }
+            .hero-badge, .status-indicator { font-size: 0.6rem !important; padding: 3px 8px !important; }
+            .hero-badge svg { width: 9px; height: 9px; }
+            /* 3. Name tight under badges */
+            .hero-title { font-size: 1.8rem !important; margin-bottom: 0 !important; line-height: 1.1 !important; }
+            /* 1. Fix rotating text ghost - clip overflow, smaller */
+            .hero-rotating-wrap { font-size: 1.1rem !important; height: 1.4em !important; margin-bottom: 0.3rem !important; overflow: hidden !important; }
+            /* 8. Compact CTAs */
+            .hero-cta-row { gap: 6px !important; margin-bottom: 0.5rem !important; }
+            .hero-cta-row .btn-primary, .hero-cta-row .btn-outline, .hero-cta-row .btn-resume { padding: 7px 14px !important; font-size: 0.75rem !important; }
+            /* 5. Smaller social icons */
+            .hero-socials { margin-bottom: 0.5rem !important; gap: 8px !important; }
+            .hero-social-link { width: 34px !important; height: 34px !important; }
+            .hero-social-link svg { width: 14px !important; height: 14px !important; }
+            /* 7. Tight stats grid */
+            .hero-stats-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0.4rem 1.5rem !important; justify-items: center; }
+            .hero-stats-grid .stat-number { font-size: 1.3rem !important; }
+            .hero-stats-grid .text-xs { font-size: 0.55rem !important; margin-top: 0 !important; }
+            /* 10. Compact section */
             #rotatingText { min-width: unset !important; }
-            #hero { padding-top: 70px !important; min-height: auto !important; padding-bottom: 1rem !important; }
+            #hero { padding-top: 65px !important; min-height: auto !important; padding-bottom: 0.5rem !important; }
+            /* 6. Hide scroll indicator on mobile */
+            #hero > .absolute.bottom-8 { display: none !important; }
+            /* 9. Move chat bubble out of the way */
+            .chat-toggle { bottom: 12px !important; left: 12px !important; width: 40px !important; height: 40px !important; }
         }
 
         /* Expandable cards */
