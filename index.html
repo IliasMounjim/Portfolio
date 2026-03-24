@@ -2027,7 +2027,7 @@
                         <input type="hidden" name="_subject" value="New Portfolio Inquiry">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="box">
-                        <input type="hidden" name="_next" value="https://iliasmounjim.com?submitted=true">
+                        <input type="hidden" name="_next" value="https://iliasmounjim.github.io/Portfolio/?submitted=true">
                         <input type="text" name="_honey" style="display:none">
                         <input type="hidden" name="service" id="serviceInput" value="">
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
@@ -3731,6 +3731,38 @@
             }, 400 + Math.random() * 400);
             msgs.scrollTop = msgs.scrollHeight;
         }
+    </script>
+
+    <!-- Thank You Overlay -->
+    <div id="thankYouOverlay" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(10,10,15,0.92); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); justify-content:center; align-items:center; flex-direction:column; gap:20px; padding:24px; text-align:center;">
+        <div style="width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg,#4ade80,#22c55e); display:flex; align-items:center; justify-content:center; box-shadow:0 0 40px rgba(74,222,128,0.3);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2 style="font-size:clamp(1.5rem,5vw,2.2rem); font-weight:800; color:var(--text-primary);">Message sent!</h2>
+        <p style="color:var(--text-secondary); font-size:clamp(0.85rem,3vw,1rem); max-width:400px; line-height:1.6;">Thanks for reaching out. I'll get back to you as soon as possible.</p>
+        <div style="display:flex; gap:12px; margin-top:8px;">
+            <a href="/Portfolio/" style="padding:10px 24px; border-radius:10px; background:var(--gradient-1); color:white; font-weight:600; font-size:0.88rem; text-decoration:none; transition:transform 0.2s, box-shadow 0.2s; box-shadow:0 4px 16px rgba(99,102,241,0.3);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">Back to Home</a>
+        </div>
+        <p style="color:var(--text-muted); font-size:0.72rem; margin-top:12px;" id="redirectTimer">Redirecting in 5s...</p>
+    </div>
+    <script>
+        (function() {
+            if (window.location.search.includes('submitted=true')) {
+                var overlay = document.getElementById('thankYouOverlay');
+                overlay.style.display = 'flex';
+                var seconds = 5;
+                var timer = document.getElementById('redirectTimer');
+                var interval = setInterval(function() {
+                    seconds--;
+                    if (seconds <= 0) {
+                        clearInterval(interval);
+                        window.location.href = window.location.pathname;
+                    } else {
+                        timer.textContent = 'Redirecting in ' + seconds + 's...';
+                    }
+                }, 1000);
+            }
+        })();
     </script>
 </body>
 </html>
