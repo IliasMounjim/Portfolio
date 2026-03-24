@@ -1597,16 +1597,41 @@
             .project-card h3 { font-size: 1rem !important; }
             .project-card p { font-size: 0.8rem !important; }
 
-            /* --- Contact --- */
-            .contact-card { padding: 18px !important; border-radius: 14px !important; }
-            .contact-card h2 { font-size: 1.4rem !important; }
-            .contact-card h3 { font-size: 1rem !important; }
-            .contact-card p { font-size: 0.8rem !important; }
-            .contact-card input, .contact-card textarea { font-size: 0.8rem !important; padding: 10px 12px !important; width: 100% !important; box-sizing: border-box !important; }
-            .contact-card textarea { min-height: 100px !important; }
-            .contact-card button { font-size: 0.85rem !important; padding: 10px 20px !important; }
-            /* Name/email grid → stack on mobile */
-            .contact-card [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+            /* --- Contact section --- */
+            #contact .section-title { font-size: 1.4rem !important; margin-bottom: 0.5rem !important; }
+            #contact > div > p { font-size: 0.78rem !important; line-height: 1.5 !important; margin-bottom: 1rem !important; }
+            #contact .grid { gap: 1rem !important; }
+            /* Inquiry form card */
+            #contact .card { padding: 16px !important; border-radius: 12px !important; }
+            #contact .card h3 { font-size: 0.9rem !important; margin-bottom: 2px !important; }
+            #contact .card > p, #contact .card form > div > p { font-size: 0.72rem !important; }
+            /* Name/email → stacked */
+            #contact [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; gap: 8px !important; margin-bottom: 8px !important; }
+            #contact input[type="text"], #contact input[type="email"] { font-size: 0.78rem !important; padding: 9px 12px !important; border-radius: 8px !important; width: 100% !important; box-sizing: border-box !important; }
+            /* Service options */
+            #contact .service-option { font-size: 0.7rem !important; padding: 5px 10px !important; }
+            #contact .service-option svg { width: 12px !important; height: 12px !important; }
+            #contact #serviceOptions { gap: 6px !important; }
+            /* Textarea */
+            #contact textarea { font-size: 0.78rem !important; padding: 9px 12px !important; border-radius: 8px !important; min-height: 80px !important; }
+            /* Submit button */
+            #contact form button[type="submit"],
+            #contact form .btn-primary { font-size: 0.8rem !important; padding: 10px 18px !important; border-radius: 10px !important; }
+            #contact form small, #contact form p[style*="text-align: center"] { font-size: 0.65rem !important; }
+            /* Reach Me Directly card */
+            #contact .card h3[style], #contact h3.font-bold { font-size: 0.9rem !important; }
+            #contact .card p[style*="text-muted"] { font-size: 0.72rem !important; }
+            /* Contact method rows */
+            #contact a[style*="border-radius: 12px"] { padding: 10px 12px !important; border-radius: 10px !important; }
+            #contact a[style*="border-radius: 12px"] h4 { font-size: 0.82rem !important; }
+            #contact a[style*="border-radius: 12px"] p { font-size: 0.68rem !important; }
+            #contact a[style*="border-radius: 12px"] div[style*="width: 44px"] { width: 36px !important; height: 36px !important; }
+            /* LinkedIn/GitHub buttons */
+            #contact a[style*="border-radius: 10px"][style*="flex: 1"] { padding: 10px !important; font-size: 0.78rem !important; }
+            /* Available Now card */
+            #contact div[style*="border-left: 3px solid #4ade80"] { padding: 14px !important; }
+            #contact div[style*="border-left: 3px solid #4ade80"] h4 { font-size: 0.85rem !important; }
+            #contact div[style*="border-left: 3px solid #4ade80"] span { font-size: 0.68rem !important; padding: 4px 8px !important; }
 
             /* --- Expandable cards --- */
             .expandable-card h3 { font-size: 0.9rem !important; }
