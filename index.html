@@ -1587,11 +1587,15 @@
             .project-card p { font-size: 0.8rem !important; }
 
             /* --- Contact --- */
-            .contact-card { padding: 20px !important; border-radius: 14px !important; }
+            .contact-card { padding: 18px !important; border-radius: 14px !important; }
             .contact-card h2 { font-size: 1.4rem !important; }
-            .contact-card p { font-size: 0.82rem !important; }
-            .contact-card input, .contact-card textarea { font-size: 0.82rem !important; padding: 10px 12px !important; }
+            .contact-card h3 { font-size: 1rem !important; }
+            .contact-card p { font-size: 0.8rem !important; }
+            .contact-card input, .contact-card textarea { font-size: 0.8rem !important; padding: 10px 12px !important; width: 100% !important; box-sizing: border-box !important; }
+            .contact-card textarea { min-height: 100px !important; }
             .contact-card button { font-size: 0.85rem !important; padding: 10px 20px !important; }
+            /* Name/email grid → stack on mobile */
+            .contact-card [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
 
             /* --- Expandable cards --- */
             .expandable-card h3 { font-size: 0.9rem !important; }
@@ -1599,6 +1603,12 @@
 
             /* --- Award badges --- */
             .award-badge { font-size: 0.7rem !important; padding: 4px 8px !important; }
+
+            /* --- Cards: max-width so they don't go full-bleed --- */
+            .card, .contact-card, .service-tier, .value-card { max-width: 92vw !important; margin-left: auto !important; margin-right: auto !important; }
+
+            /* --- Language cards inside About --- */
+            #about .card { max-width: 88vw !important; }
 
             /* --- Section dividers --- */
             .section-divider { margin: 0 !important; }
