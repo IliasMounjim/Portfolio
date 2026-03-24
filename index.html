@@ -382,10 +382,12 @@
             opacity: 0;
         }
 
-        /* Hover expands (unless locked) */
-        .expandable-card:hover .expand-content {
-            max-height: 2000px;
-            opacity: 1;
+        /* Hover expands on desktop only (touch devices treat tap as hover) */
+        @media (hover: hover) {
+            .expandable-card:hover .expand-content {
+                max-height: 2000px;
+                opacity: 1;
+            }
         }
 
         /* Click-locked expand */
@@ -399,9 +401,11 @@
             flex-shrink: 0;
         }
 
-        .expandable-card:hover .expand-icon,
         .expandable-card.expanded .expand-icon {
             transform: rotate(180deg);
+        }
+        @media (hover: hover) {
+            .expandable-card:hover .expand-icon { transform: rotate(180deg); }
         }
 
         .expandable-card .expand-hint {
@@ -411,7 +415,9 @@
             transition: opacity 0.3s ease;
             margin-top: 8px;
         }
-        .expandable-card:hover .expand-hint { opacity: 0.6; }
+        @media (hover: hover) {
+            .expandable-card:hover .expand-hint { opacity: 0.6; }
+        }
         .expandable-card.expanded .expand-hint { opacity: 0; }
 
         /* Skill icon tags */
@@ -2176,7 +2182,7 @@
                     <!-- Payless Motors -->
                     <div class="timeline-item left reveal reveal-delay-1">
                         <div class="timeline-dot-center"></div>
-                        <div class="timeline-card card expandable-card" onclick="this.classList.toggle('expanded')">
+                        <div class="timeline-card card expandable-card" onclick="toggleExpand(this)">
                             <div class="flex items-center justify-between mb-3">
                                 <div class="flex flex-wrap items-center gap-3">
                                     <h3 class="font-bold text-lg">Payless Motors</h3>
@@ -2207,7 +2213,7 @@
                     <!-- Freelance Developer -->
                     <div class="timeline-item right reveal reveal-delay-2">
                         <div class="timeline-dot-center"></div>
-                        <div class="timeline-card card expandable-card" onclick="this.classList.toggle('expanded')">
+                        <div class="timeline-card card expandable-card" onclick="toggleExpand(this)">
                             <div class="flex items-center justify-between mb-1">
                                 <h3 class="font-bold text-lg">Freelance Web Developer</h3>
                                 <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2237,7 +2243,7 @@
                     <!-- Boulder Limo -->
                     <div class="timeline-item left reveal reveal-delay-3">
                         <div class="timeline-dot-center"></div>
-                        <div class="timeline-card card expandable-card" onclick="this.classList.toggle('expanded')">
+                        <div class="timeline-card card expandable-card" onclick="toggleExpand(this)">
                             <div class="flex items-center justify-between mb-1">
                                 <h3 class="font-bold text-lg">Boulder Limo Service</h3>
                                 <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2265,7 +2271,7 @@
                     <!-- KINGSS Towing -->
                     <div class="timeline-item right reveal reveal-delay-1">
                         <div class="timeline-dot-center"></div>
-                        <div class="timeline-card card expandable-card" onclick="this.classList.toggle('expanded')">
+                        <div class="timeline-card card expandable-card" onclick="toggleExpand(this)">
                             <div class="flex items-center justify-between mb-1">
                                 <h3 class="font-bold text-lg">KINGSS Towing and Roadside</h3>
                                 <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2293,7 +2299,7 @@
                     <!-- U.S. Army -->
                     <div id="army" class="timeline-item left reveal reveal-delay-2">
                         <div class="timeline-dot-center"></div>
-                        <div class="timeline-card card expandable-card" onclick="this.classList.toggle('expanded')">
+                        <div class="timeline-card card expandable-card" onclick="toggleExpand(this)">
                             <div class="flex items-center justify-between mb-3">
                                 <div class="flex flex-wrap items-center gap-3">
                                     <h3 class="font-bold text-lg">U.S. Army</h3>
@@ -2344,7 +2350,7 @@
             <h2 class="section-title mb-12 reveal reveal-delay-1">Academic <span class="gradient-text">background</span></h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" style="align-items: start;">
-                <div class="card reveal reveal-delay-1 expandable-card" style="border-left: 3px solid var(--accent);" onclick="this.classList.toggle('expanded')">
+                <div class="card reveal reveal-delay-1 expandable-card" style="border-left: 3px solid var(--accent);" onclick="toggleExpand(this)">
                     <div class="flex items-center justify-between">
                         <div style="display: flex; gap: 6px; margin-bottom: 12px;">
                             <span style="padding: 3px 10px; border-radius: 6px; background: rgba(99, 102, 241, 0.1); color: var(--accent-light); font-size: 0.75rem; font-weight: 600;">IN PROGRESS</span>
@@ -2374,7 +2380,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal reveal-delay-2 expandable-card" style="border-left: 3px solid #4ade80;" onclick="this.classList.toggle('expanded')">
+                <div class="card reveal reveal-delay-2 expandable-card" style="border-left: 3px solid #4ade80;" onclick="toggleExpand(this)">
                     <div class="flex items-center justify-between">
                         <div style="display: flex; gap: 6px; margin-bottom: 12px;">
                             <span style="padding: 3px 10px; border-radius: 6px; background: rgba(34, 197, 94, 0.1); color: #4ade80; font-size: 0.75rem; font-weight: 600;">COMPLETED</span>
@@ -2405,7 +2411,7 @@
                     </div>
                 </div>
 
-                <div class="card reveal reveal-delay-3 expandable-card" style="border-left: 3px solid #fbbf24;" onclick="this.classList.toggle('expanded')">
+                <div class="card reveal reveal-delay-3 expandable-card" style="border-left: 3px solid #fbbf24;" onclick="toggleExpand(this)">
                     <div class="flex items-center justify-between">
                         <div style="display: flex; gap: 6px; margin-bottom: 12px;">
                             <span style="padding: 3px 10px; border-radius: 6px; background: rgba(245, 158, 11, 0.1); color: #fbbf24; font-size: 0.75rem; font-weight: 600;">COMPLETED</span>
@@ -2606,7 +2612,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 <!-- DealerFlow -->
-                <div class="project-card expandable-card reveal reveal-delay-1" onclick="this.classList.toggle('expanded')" style="grid-column: span 1;">
+                <div class="project-card expandable-card reveal reveal-delay-1" onclick="toggleExpand(this)" style="grid-column: span 1;">
                     <div class="project-header" style="background: linear-gradient(135deg, #1e1b4b, #312e81); position: relative; overflow: hidden;">
                         <!-- CSS Dashboard Mockup -->
                         <div style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); width: 85%; height: 90px; background: rgba(255,255,255,0.06); border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); padding: 10px 14px; display: flex; gap: 10px;">
@@ -2669,7 +2675,7 @@
                 </div>
 
                 <!-- Boulder Limo -->
-                <div class="project-card expandable-card reveal reveal-delay-2" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal reveal-delay-2" onclick="toggleExpand(this)">
                     <div class="project-preview">
                         <iframe src="https://boulderlimo.org" loading="lazy" sandbox="allow-same-origin" title="Boulder Limo preview"></iframe>
                         <div class="preview-overlay"></div>
@@ -2704,7 +2710,7 @@
                 </div>
 
                 <!-- Parker Limo -->
-                <div class="project-card expandable-card reveal reveal-delay-3" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal reveal-delay-3" onclick="toggleExpand(this)">
                     <div class="project-preview">
                         <iframe src="https://parkerlimoservice.com" loading="lazy" sandbox="allow-same-origin" title="Parker Limo preview"></iframe>
                         <div class="preview-overlay"></div>
@@ -2739,7 +2745,7 @@
                 </div>
 
                 <!-- AI Firewall -->
-                <div class="project-card expandable-card reveal" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal" onclick="toggleExpand(this)">
                     <div class="project-header" style="background: linear-gradient(135deg, #78350f, #f59e0b);">
                         <div style="position: absolute; bottom: 16px; left: 20px; right: 20px;">
                             <div style="display: flex; gap: 6px;">
@@ -2771,7 +2777,7 @@
                 </div>
 
                 <!-- E-Commerce Platform -->
-                <div class="project-card expandable-card reveal" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal" onclick="toggleExpand(this)">
                     <div class="project-header" style="background: linear-gradient(135deg, #134e4a, #0f766e);">
                         <div class="pattern">
                             <svg width="100%" height="100%"><defs><pattern id="p2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M0 20h40M20 0v40" stroke="#14b8a6" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(#p2)"/></svg>
@@ -2806,7 +2812,7 @@
                 </div>
 
                 <!-- Bank Manager -->
-                <div class="project-card expandable-card reveal" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal" onclick="toggleExpand(this)">
                     <div class="project-header" style="background: linear-gradient(135deg, #4a1d96, #7c3aed);">
                         <div class="pattern">
                             <svg width="100%" height="100%"><defs><pattern id="p3" width="20" height="20" patternUnits="userSpaceOnUse"><rect x="8" y="8" width="4" height="4" fill="#a78bfa" opacity="0.2"/></pattern></defs><rect width="100%" height="100%" fill="url(#p3)"/></svg>
@@ -2852,7 +2858,7 @@
             <!-- Hidden Projects Grid -->
             <div id="moreProjects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style="display: none; margin-top: 1.5rem;">
                 <!-- Network Security Scanner -->
-                <div class="project-card expandable-card reveal" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal" onclick="toggleExpand(this)">
                     <div class="project-header" style="background: linear-gradient(135deg, #7f1d1d, #dc2626);">
                         <div class="pattern">
                             <svg width="100%" height="100%"><defs><pattern id="p5" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="2" fill="#fca5a5" opacity="0.2"/><circle cx="0" cy="0" r="1" fill="#fca5a5" opacity="0.15"/></pattern></defs><rect width="100%" height="100%" fill="url(#p5)"/></svg>
@@ -2887,7 +2893,7 @@
                 </div>
 
                 <!-- Task Management App -->
-                <div class="project-card expandable-card reveal" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal" onclick="toggleExpand(this)">
                     <div class="project-header" style="background: linear-gradient(135deg, #7c2d12, #ea580c);">
                         <div class="pattern">
                             <svg width="100%" height="100%"><defs><pattern id="p6" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke="#fdba74" stroke-width="0.3" opacity="0.25"/></pattern></defs><rect width="100%" height="100%" fill="url(#p6)"/></svg>
@@ -2922,7 +2928,7 @@
                 </div>
 
                 <!-- REST API Toolkit -->
-                <div class="project-card expandable-card reveal" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal" onclick="toggleExpand(this)">
                     <div class="project-header" style="background: linear-gradient(135deg, #1e3a5f, #3b82f6);">
                         <div class="pattern">
                             <svg width="100%" height="100%"><defs><pattern id="p7" width="16" height="16" patternUnits="userSpaceOnUse"><rect x="6" y="6" width="4" height="4" fill="#93c5fd" opacity="0.15" rx="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p7)"/></svg>
@@ -2957,7 +2963,7 @@
                 </div>
 
                 <!-- Encrypted Password Manager -->
-                <div class="project-card expandable-card reveal" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal" onclick="toggleExpand(this)">
                     <div class="project-header" style="background: linear-gradient(135deg, #581c87, #a855f7);">
                         <div class="pattern">
                             <svg width="100%" height="100%"><defs><pattern id="p8" width="20" height="20" patternUnits="userSpaceOnUse"><rect x="9" y="9" width="2" height="2" fill="#c084fc" opacity="0.2"/></pattern></defs><rect width="100%" height="100%" fill="url(#p8)"/></svg>
@@ -2992,7 +2998,7 @@
                 </div>
 
                 <!-- Packet Sniffer -->
-                <div class="project-card expandable-card reveal" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal" onclick="toggleExpand(this)">
                     <div class="project-header" style="background: linear-gradient(135deg, #164e63, #0891b2);">
                         <div class="pattern">
                             <svg width="100%" height="100%"><defs><pattern id="p9" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="12" cy="12" r="1" fill="#67e8f9" opacity="0.2"/></pattern></defs><rect width="100%" height="100%" fill="url(#p9)"/></svg>
@@ -3027,7 +3033,7 @@
                 </div>
 
                 <!-- IoT Dashboard -->
-                <div class="project-card expandable-card reveal" onclick="this.classList.toggle('expanded')">
+                <div class="project-card expandable-card reveal" onclick="toggleExpand(this)">
                     <div class="project-header" style="background: linear-gradient(135deg, #065f46, #059669);">
                         <div class="pattern">
                             <svg width="100%" height="100%"><defs><pattern id="p10" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M0 15h30M15 0v30" stroke="#6ee7b7" stroke-width="0.4" opacity="0.2"/></pattern></defs><rect width="100%" height="100%" fill="url(#p10)"/></svg>
@@ -3151,6 +3157,13 @@
 
     <!-- Scripts -->
     <script>
+        // ===== ACCORDION: collapse others, toggle self =====
+        function toggleExpand(el) {
+            const wasExpanded = el.classList.contains('expanded');
+            document.querySelectorAll('.expandable-card.expanded').forEach(c => c.classList.remove('expanded'));
+            if (!wasExpanded) el.classList.add('expanded');
+        }
+
         // ===== MATRIX RAIN EFFECT =====
         (function() {
             const canvas = document.getElementById('matrixCanvas');
