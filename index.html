@@ -1571,10 +1571,15 @@
             .value-card p { font-size: 0.78rem !important; line-height: 1.5 !important; }
 
             /* --- Service tiers --- */
-            .service-tier { padding: 1.25rem !important; border-radius: 12px !important; }
-            .service-tier h3 { font-size: 1rem !important; }
-            .service-tier p, .service-tier li { font-size: 0.8rem !important; }
-            .service-option { font-size: 0.75rem !important; padding: 6px 12px !important; }
+            .service-tier { padding: 10px !important; border-radius: 10px !important; }
+            .service-tier h3 { font-size: 0.75rem !important; }
+            .service-tier p, .service-tier li { font-size: 0.62rem !important; line-height: 1.4 !important; }
+            .service-tier li { margin-bottom: 2px !important; }
+            .service-tier ul { padding-left: 14px !important; margin: 6px 0 !important; }
+            .service-option { font-size: 0.6rem !important; padding: 4px 8px !important; }
+            .service-tier .btn-primary,
+            .service-tier a[style*="padding: 14px"] { padding: 8px 12px !important; font-size: 0.7rem !important; border-radius: 8px !important; }
+            .service-tier span[style*="font-size: 0.7rem"] { font-size: 0.55rem !important; padding: 2px 6px !important; }
 
             /* --- Process steps --- */
             .process-step { padding: 1rem !important; }
@@ -1589,8 +1594,18 @@
             .timeline-card p, .timeline-card li { font-size: 0.78rem !important; line-height: 1.5 !important; }
 
             /* --- Skills --- */
-            .skill-icon-tag { font-size: 0.72rem !important; padding: 6px 10px !important; }
-            .skill-tag { font-size: 0.7rem !important; padding: 4px 8px !important; }
+            .skill-icon-tag { font-size: 0.6rem !important; padding: 4px 7px !important; gap: 4px !important; }
+            .skill-icon-tag img, .skill-icon-tag svg { width: 14px !important; height: 14px !important; }
+            .skill-tag { font-size: 0.58rem !important; padding: 3px 6px !important; }
+            #skills .card { padding: 12px !important; }
+            #skills .card h3 { font-size: 0.82rem !important; margin-bottom: 8px !important; }
+            #skills .card > div[style*="flex-wrap"] { gap: 5px !important; }
+            #skills .card div[style*="width: 36px"],
+            #skills .card div[style*="width: 38px"],
+            #skills .card div[style*="width: 40px"] { width: 28px !important; height: 28px !important; }
+            #skills .card div[style*="width: 36px"] svg,
+            #skills .card div[style*="width: 38px"] svg,
+            #skills .card div[style*="width: 40px"] svg { width: 14px !important; height: 14px !important; }
 
             /* --- Projects --- */
             .project-card { border-radius: 12px !important; }
@@ -1693,23 +1708,13 @@
             #about .flex.flex-col.gap-6.reveal.reveal-delay-2 div[style*="padding: 10px 14px"] { padding: 6px 8px !important; gap: 8px !important; }
             #about .flex.flex-col.gap-6.reveal.reveal-delay-2 svg[width="14"] { width: 11px !important; height: 11px !important; }
 
-            /* --- Services: horizontal scroll pricing --- */
+            /* --- Services: 3-col compact grid --- */
             #services .grid {
-                display: flex !important;
-                overflow-x: auto !important;
-                scroll-snap-type: x mandatory !important;
-                -webkit-overflow-scrolling: touch !important;
-                gap: 12px !important;
-                padding-bottom: 8px !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr !important;
+                gap: 8px !important;
             }
-            #services .grid > .service-tier,
-            #services .grid > div {
-                min-width: 200px !important;
-                max-width: 220px !important;
-                flex-shrink: 0 !important;
-                scroll-snap-align: start !important;
-            }
-            .service-tier { max-width: none !important; margin: 0 !important; }
+            .service-tier { max-width: none !important; margin: 0 !important; overflow: hidden !important; }
 
             /* --- Contact: Reach Me + Available Now side by side --- */
             #contact .flex.flex-col.gap-6.reveal.reveal-delay-3 {
