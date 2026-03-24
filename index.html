@@ -334,16 +334,26 @@
         }
 
         @media (max-width: 768px) {
-            .profile-image, .profile-placeholder { width: 200px; height: 250px; }
-            .profile-placeholder { font-size: 3.5rem; }
-            .hero-grid { flex-direction: column; align-items: center; text-align: center; }
+            .profile-image, .profile-placeholder { width: 120px; height: 150px; border-radius: 16px; }
+            .profile-placeholder { font-size: 2.5rem; }
+            .hero-grid { flex-direction: column; align-items: center; text-align: center; gap: 0 !important; }
             .hero-grid > div:first-child { order: 2; }
-            .hero-grid > div:last-child { order: 1; margin-bottom: 1.5rem; }
+            .hero-grid > div:last-child { order: 1; margin-bottom: 0.75rem; }
             .hero-grid .flex-wrap { justify-content: center; }
-            .hero-grid .hero-socials { justify-content: center; }
-            .hero-grid p { margin-left: auto; margin-right: auto; }
-            .hero-stats-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 1.5rem !important; justify-items: center; }
-            #rotatingText { min-width: unset !important; font-size: clamp(1.2rem, 5vw, 1.8rem) !important; }
+            .hero-grid .hero-socials { justify-content: center; margin-bottom: 1rem !important; }
+            .hero-grid p { margin-left: auto; margin-right: auto; font-size: 0.9rem !important; margin-bottom: 1rem !important; line-height: 1.5 !important; }
+            .hero-badges-row { gap: 6px !important; margin-bottom: 0.5rem !important; }
+            .hero-badge, .status-indicator { font-size: 0.65rem !important; padding: 4px 10px !important; }
+            .hero-badge svg { width: 10px; height: 10px; }
+            .hero-title { font-size: 2rem !important; margin-bottom: 0 !important; }
+            .hero-rotating-wrap { font-size: 1.3rem !important; height: 1.3em !important; margin-bottom: 0.5rem !important; }
+            .hero-cta-row { gap: 8px !important; margin-bottom: 0.75rem !important; }
+            .hero-cta-row .btn-primary, .hero-cta-row .btn-outline, .hero-cta-row .btn-resume { padding: 8px 16px !important; font-size: 0.8rem !important; }
+            .hero-stats-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0.75rem !important; justify-items: center; }
+            .hero-stats-grid .stat-number { font-size: 1.5rem !important; }
+            .hero-stats-grid .text-xs { font-size: 0.6rem !important; }
+            #rotatingText { min-width: unset !important; }
+            #hero { padding-top: 70px !important; min-height: auto !important; padding-bottom: 1rem !important; }
         }
 
         /* Expandable cards */
@@ -1595,7 +1605,7 @@
         <div class="max-w-6xl mx-auto w-full relative z-10">
             <div class="hero-grid flex items-center justify-between gap-12" style="flex-wrap: wrap;">
                 <div style="flex: 1; min-width: 300px;">
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.5rem;" class="reveal">
+                    <div class="hero-badges-row reveal" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.5rem;">
                         <div class="hero-badge">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
@@ -1611,7 +1621,7 @@
                     <h1 class="hero-title mb-2 reveal reveal-delay-1">
                         Hi, I'm <span class="name-gradient">Illiasse</span>
                     </h1>
-                    <div class="reveal reveal-delay-1" style="font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 700; height: 1.4em; display: flex; align-items: center; margin-bottom: 1.5rem;">
+                    <div class="hero-rotating-wrap reveal reveal-delay-1" style="font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 700; height: 1.4em; display: flex; align-items: center; margin-bottom: 1.5rem;">
                         <span id="rotatingText">Full-Stack Software Engineer</span>
                     </div>
 
@@ -1619,7 +1629,7 @@
                         Software developer and M.S. Cybersecurity student at CU Denver. Founded and scaled a business to six figures. Building websites that convert and a SaaS platform with AI-accelerated, security-first development.
                     </p>
 
-                    <div class="flex flex-wrap gap-4 mb-12 reveal reveal-delay-3">
+                    <div class="hero-cta-row flex flex-wrap gap-4 mb-12 reveal reveal-delay-3">
                         <a href="#contact" class="btn-primary">
                             Get in touch
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
