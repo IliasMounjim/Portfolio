@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Illiasse Mounjim</title>
+    <meta name="description" content="Thoughts on software engineering, cybersecurity, entrepreneurship, and building in public — by Illiasse Mounjim.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog | Illiasse Mounjim">
+    <meta property="og:description" content="Thoughts on software engineering, cybersecurity, entrepreneurship, and building in public.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Ctext x='6' y='46' font-family='Georgia,serif' font-weight='800' font-size='38' fill='%23f1f5f9'%3EI%3C/text%3E%3Ctext x='20' y='46' font-family='Georgia,serif' font-weight='800' font-size='38' fill='%23818cf8'%3EM%3C/text%3E%3Ccircle cx='54' cy='44' r='4' fill='%236366f1'/%3E%3C/svg%3E">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a2e;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #1e293b;
+            --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+        .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(12px) saturate(140%);
+            -webkit-backdrop-filter: blur(12px) saturate(140%);
+            background: rgba(10, 10, 15, 0.55);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.08);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+        .nav-logo .logo-i { color: var(--text-primary); }
+        .nav-logo .logo-m {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-logo .logo-dot { color: var(--accent); font-size: 2rem; line-height: 0; }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+        .nav-link:hover { color: var(--accent-light); }
+
+        /* Blog cards */
+        .blog-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .blog-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 40px var(--accent-glow);
+        }
+        .blog-card:hover::before { opacity: 1; }
+
+        .blog-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            color: var(--accent-light);
+            font-size: 0.72rem;
+            font-weight: 500;
+        }
+
+        .blog-date {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+        .read-more:hover { gap: 10px; }
+
+        /* Filter tabs */
+        .filter-tab {
+            padding: 8px 18px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        .filter-tab:hover { border-color: rgba(99, 102, 241, 0.3); color: var(--text-primary); }
+        .filter-tab.active {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: var(--accent);
+            color: var(--accent-light);
+        }
+
+        /* Page header */
+        .page-hero {
+            padding: 10rem 1.5rem 4rem;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+        footer a:hover { color: var(--accent-light); }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-blur fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-i">I</span><span class="logo-m">M</span><span class="logo-dot">.</span>
+            </a>
+            <div class="flex items-center gap-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <span class="nav-link" style="color: var(--accent-light); font-weight: 600;">Blog</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="reveal">
+            <p style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-light); margin-bottom: 1rem;">Latest Thoughts</p>
+            <h1>The <span class="gradient-text">Blog</span></h1>
+            <p style="color: var(--text-secondary); max-width: 520px; margin: 0 auto; line-height: 1.7;">Thoughts on software engineering, cybersecurity, building products, and lessons from 4 years of Army service.</p>
+        </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="max-w-4xl mx-auto px-6 mb-10 reveal" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+        <button class="filter-tab active" onclick="filterPosts('all', this)">All</button>
+        <button class="filter-tab" onclick="filterPosts('engineering', this)">Engineering</button>
+        <button class="filter-tab" onclick="filterPosts('security', this)">Security</button>
+        <button class="filter-tab" onclick="filterPosts('business', this)">Business</button>
+        <button class="filter-tab" onclick="filterPosts('personal', this)">Personal</button>
+    </div>
+
+    <!-- Blog Posts -->
+    <main class="max-w-4xl mx-auto px-6 pb-24">
+        <div style="display: flex; flex-direction: column; gap: 24px;" id="blogGrid">
+
+            <!-- Post 1 -->
+            <article class="blog-card reveal" data-category="engineering">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+                    <div style="display: flex; gap: 8px;">
+                        <span class="blog-tag">Engineering</span>
+                        <span class="blog-tag">Laravel</span>
+                    </div>
+                    <span class="blog-date">Mar 15, 2026</span>
+                </div>
+                <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">Why I Chose Laravel Over Next.js for DealerFlow</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
+                    When I started building DealerFlow — a full dealer management platform — the first decision was the stack. Everyone was pushing Next.js, but I went with Laravel and Livewire instead. Here's why that turned out to be the right call for a solo founder building an enterprise product.
+                </p>
+                <a href="#" class="read-more">
+                    Read more
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="blog-card reveal" data-category="security">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+                    <div style="display: flex; gap: 8px;">
+                        <span class="blog-tag">Security</span>
+                        <span class="blog-tag">Graduate School</span>
+                    </div>
+                    <span class="blog-date">Feb 28, 2026</span>
+                </div>
+                <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">5 Things My Cybersecurity M.S. Taught Me That CS Didn't</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
+                    A CS degree teaches you how to build software. A cybersecurity degree teaches you how to break it — and more importantly, how to think like an attacker. These are the five paradigm shifts that changed how I write every line of code.
+                </p>
+                <a href="#" class="read-more">
+                    Read more
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="blog-card reveal" data-category="business">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+                    <div style="display: flex; gap: 8px;">
+                        <span class="blog-tag">Business</span>
+                        <span class="blog-tag">Freelance</span>
+                    </div>
+                    <span class="blog-date">Feb 10, 2026</span>
+                </div>
+                <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">From $0 to 2 Live Clients: What I Learned Selling Websites</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
+                    I didn't start as a salesman. I started as a developer who realized nobody cares about your stack — they care about results. Here's the honest breakdown of landing my first two paying clients and the mistakes I made along the way.
+                </p>
+                <a href="#" class="read-more">
+                    Read more
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="blog-card reveal" data-category="personal">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+                    <div style="display: flex; gap: 8px;">
+                        <span class="blog-tag">Personal</span>
+                        <span class="blog-tag">Veteran</span>
+                    </div>
+                    <span class="blog-date">Jan 22, 2026</span>
+                </div>
+                <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">How the Army Made Me a Better Developer</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
+                    Four years of active duty taught me discipline, adaptability, and how to perform under pressure. None of those are technical skills — but they're the reason I can ship products, meet deadlines, and stay calm when production is on fire.
+                </p>
+                <a href="#" class="read-more">
+                    Read more
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </article>
+
+            <!-- Post 5 -->
+            <article class="blog-card reveal" data-category="engineering">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+                    <div style="display: flex; gap: 8px;">
+                        <span class="blog-tag">Engineering</span>
+                        <span class="blog-tag">Performance</span>
+                    </div>
+                    <span class="blog-date">Jan 5, 2026</span>
+                </div>
+                <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">Building a 2900-Line Single-File Portfolio (and Why It's Fast)</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
+                    This portfolio is one HTML file — no build tools, no bundler, no framework. Just raw HTML, CSS, and vanilla JS with a matrix rain canvas. Here's how I kept it performant at nearly 3000 lines and what I'd do differently next time.
+                </p>
+                <a href="#" class="read-more">
+                    Read more
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="px-6 py-6" style="border-top: 1px solid var(--border); background: rgba(10, 10, 15, 0.5);">
+        <div class="max-w-6xl mx-auto">
+            <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; color: var(--text-muted); font-size: 0.78rem;">
+                <a href="index.html" class="nav-logo" style="text-decoration: none; font-size: 1.2rem; margin-right: 4px;">
+                    <span class="logo-i">I</span><span class="logo-m">M</span><span class="logo-dot">.</span>
+                </a>
+                <span>&copy; 2026 Illiasse Mounjim</span>
+                <span>&bull;</span>
+                <span>Aurora, CO</span>
+                <div style="margin-left: auto; display: flex; gap: 10px;">
+                    <a href="https://linkedin.com/in/ilias-mounjim" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://github.com/IliasMounjim" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter posts
+        function filterPosts(category, btn) {
+            document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+            btn.classList.add('active');
+            document.querySelectorAll('.blog-card').forEach(function(card) {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(12px)';
+                    setTimeout(function() { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Reveal on scroll
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+    </script>
+</body>
+</html>
