@@ -909,7 +909,9 @@
             content: '|';
             animation: blink 1s step-end infinite;
             margin-left: 2px;
+            -webkit-text-fill-color: var(--accent-light);
             color: var(--accent-light);
+            background: none;
         }
         @keyframes blink {
             50% { opacity: 0; }
@@ -2248,7 +2250,7 @@
                                 <h3 class="font-bold text-lg">Boulder Limo Service</h3>
                                 <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                             </div>
-                            <div style="color: var(--accent-light); font-size: 0.85rem; font-weight: 500; margin-bottom: 4px;">Manager-Dispatcher &amp; Driver</div>
+                            <div style="color: var(--accent-light); font-size: 0.85rem; font-weight: 500; margin-bottom: 4px;">Operations Manager</div>
                             <div style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 4px;">Boulder, CO &bull; Apr 2019 &ndash; Dec 2023 &bull; 4 yr 9 mo</div>
                             <div class="expand-content" style="margin-top: 12px;">
                                 <ul style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.8; list-style: none; padding: 0; margin: 0 0 12px 0;">
@@ -2268,12 +2270,12 @@
                         </div>
                     </div>
 
-                    <!-- KINGSS Towing -->
+                    <!-- Roadside Assistance -->
                     <div class="timeline-item right reveal reveal-delay-1">
                         <div class="timeline-dot-center"></div>
                         <div class="timeline-card card expandable-card" onclick="toggleExpand(this)">
                             <div class="flex items-center justify-between mb-1">
-                                <h3 class="font-bold text-lg">KINGSS Towing and Roadside</h3>
+                                <h3 class="font-bold text-lg">Roadside Assistance and Towing</h3>
                                 <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                             </div>
                             <div style="color: var(--accent-light); font-size: 0.85rem; font-weight: 500; margin-bottom: 4px;">Service Dispatcher</div>
@@ -3653,7 +3655,7 @@
             { k: ['api','backend','database','server','cloud','deploy','host','devops','ci/cd','infrastructure'], w: 2, r: 'Ilias is experienced with backend architecture: REST APIs, Node.js/Express, Laravel, PostgreSQL, MySQL, MongoDB, Docker, GCP, Firebase, Nginx, and CI/CD pipelines. He handles everything from database design to production deployment.' },
             { k: ['thank','thanks','awesome','great','cool','nice','perfect','appreciate','helpful'], w: 1, r: 'Glad I could help! If you have any other questions or want to get in touch with Ilias, use the contact form or email illiasse.mounjim@gmail.com. He\'d love to hear from you!' },
             { k: ['limo','boulder limo','parker limo','transportation','dispatch','driver'], w: 2, r: 'Ilias managed operations at Boulder Limo Service for nearly 5 years, coordinating 10+ vehicles across Boulder and Denver metro for airport transfers, corporate accounts, and VIP clients. He also built their website which ranks on Google page 1. He knows the transportation industry inside and out.' },
-            { k: ['tow','towing','kingss','roadside','emergency','breakdown','aaa','h&m'], w: 2, r: 'Ilias worked as a service dispatcher at KINGSS Towing and Roadside, triaging 50+ emergency calls daily and coordinating with law enforcement and insurance companies. That high-pressure dispatch experience sharpened his ability to perform under pressure and manage real-time logistics.' }
+            { k: ['tow','towing','roadside','emergency','emergency','breakdown','aaa','h&m'], w: 2, r: 'Ilias worked as a service dispatcher at Roadside Assistance and Towing, triaging 50+ emergency calls daily and coordinating with law enforcement and insurance companies. That high-pressure dispatch experience sharpened his ability to perform under pressure and manage real-time logistics.' }
         ];
         function getBotReply(msg) {
             var m = msg.toLowerCase().replace(/[^a-z0-9\s\']/g, ' ');
