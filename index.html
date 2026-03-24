@@ -3221,7 +3221,7 @@
             setInterval(drawMatrix, 80);
         })();
 
-        // ===== ROTATING TITLE =====
+        // ===== TYPEWRITER ROTATING TITLE =====
         (function() {
             var el = document.getElementById('rotatingText');
             if (!el) return;
@@ -3233,15 +3233,41 @@
                 'Entrepreneur & Builder'
             ];
             var current = 0;
+            var typeSpeed = 60;
+            var deleteSpeed = 30;
+            var pauseAfterType = 2500;
+            var pauseAfterDelete = 400;
 
-            setInterval(function() {
-                el.style.opacity = '0';
-                setTimeout(function() {
-                    current = (current + 1) % titles.length;
-                    el.textContent = titles[current];
-                    el.style.opacity = '1';
-                }, 400);
-            }, 4500);
+            function typeText(text, i, cb) {
+                if (i <= text.length) {
+                    el.textContent = text.substring(0, i);
+                    setTimeout(function() { typeText(text, i + 1, cb); }, typeSpeed);
+                } else {
+                    setTimeout(cb, pauseAfterType);
+                }
+            }
+
+            function deleteText(cb) {
+                var text = el.textContent;
+                if (text.length > 0) {
+                    el.textContent = text.substring(0, text.length - 1);
+                    setTimeout(function() { deleteText(cb); }, deleteSpeed);
+                } else {
+                    setTimeout(cb, pauseAfterDelete);
+                }
+            }
+
+            function loop() {
+                current = (current + 1) % titles.length;
+                typeText(titles[current], 0, function() {
+                    deleteText(loop);
+                });
+            }
+
+            // Start: show first title, then after pause start cycling
+            setTimeout(function() {
+                deleteText(loop);
+            }, pauseAfterType);
         })();
 
         // ===== SCROLL REVEAL =====
