@@ -235,7 +235,7 @@
         /* ===== ROTATING TITLE ===== */
         #rotatingText {
             display: inline-block;
-            min-width: 320px;
+            min-width: min(320px, 90vw);
             transition: opacity 0.5s ease;
             background: linear-gradient(135deg, #c7d2fe, #94a3b8);
             -webkit-background-clip: text;
@@ -334,9 +334,16 @@
         }
 
         @media (max-width: 768px) {
-            .profile-image, .profile-placeholder { width: 220px; height: 280px; }
+            .profile-image, .profile-placeholder { width: 200px; height: 250px; }
             .profile-placeholder { font-size: 3.5rem; }
-            .hero-grid { flex-direction: column; }
+            .hero-grid { flex-direction: column; align-items: center; text-align: center; }
+            .hero-grid > div:first-child { order: 2; }
+            .hero-grid > div:last-child { order: 1; margin-bottom: 1.5rem; }
+            .hero-grid .flex-wrap { justify-content: center; }
+            .hero-grid .hero-socials { justify-content: center; }
+            .hero-grid p { margin-left: auto; margin-right: auto; }
+            .hero-stats-grid { display: grid !important; grid-template-columns: 1fr 1fr; gap: 1.5rem !important; justify-items: center; }
+            #rotatingText { min-width: unset !important; font-size: clamp(1.2rem, 5vw, 1.8rem) !important; }
         }
 
         /* Expandable cards */
@@ -1640,7 +1647,7 @@
                     </div>
 
                     <!-- Quick stats -->
-                    <div class="flex flex-wrap gap-8 reveal reveal-delay-4">
+                    <div class="hero-stats-grid flex flex-wrap gap-8 reveal reveal-delay-4">
                         <a href="#experience" style="text-decoration: none; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
                             <div class="stat-number" id="yearsExp">11+</div>
                             <div class="text-xs mt-1" style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">Years Experience</div>
@@ -1662,11 +1669,7 @@
 
                 <!-- Profile Image -->
                 <div class="reveal reveal-delay-2" style="flex-shrink: 0;">
-                    <div class="profile-placeholder" id="profileSpot">
-                        <span class="initials">IM</span>
-                    </div>
-                    <!-- Replace placeholder: drop profile.jpeg in same folder and uncomment below -->
-                    <!-- <img src="profile.jpeg" alt="Illiasse Mounjim" class="profile-image"> -->
+                    <img src="profile.jpeg" alt="Illiasse Mounjim" class="profile-image">
                 </div>
             </div>
         </div>
