@@ -1342,14 +1342,19 @@
         .service-tier.popular::after {
             content: 'POPULAR';
             position: absolute;
-            top: -10px; right: 16px;
-            background: var(--gradient-1);
+            top: -10px; right: 10px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.7), rgba(168, 85, 247, 0.7));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             color: white;
             font-size: 0.6rem;
             font-weight: 800;
             letter-spacing: 0.12em;
-            padding: 3px 10px;
-            border-radius: 6px;
+            padding: 4px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3), 0 0 20px rgba(168, 85, 247, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            z-index: 2;
         }
         .tier-header {
             display: flex;
@@ -1622,8 +1627,7 @@
             .service-tier .btn-primary,
             .service-tier a[style*="padding: 14px"] { padding: 5px 8px !important; font-size: 0.55rem !important; border-radius: 6px !important; }
             .service-tier span[style*="font-size: 0.7rem"] { font-size: 0.45rem !important; padding: 1px 4px !important; }
-            .service-tier span[style*="POPULAR"],
-            .service-tier div[style*="POPULAR"] { font-size: 0.45rem !important; padding: 1px 5px !important; }
+            .service-tier.popular::after { font-size: 0.42rem !important; padding: 3px 7px !important; top: -8px !important; right: 6px !important; border-radius: 5px !important; letter-spacing: 0.1em !important; }
 
             /* --- Process steps --- */
             .process-step { padding: 8px !important; }
@@ -1660,24 +1664,23 @@
             #education .card h3 { font-size: 0.72rem !important; }
             #education .card h4, #education .card p { font-size: 0.6rem !important; }
 
-            /* --- Skills: 2 columns, compact tags --- */
+            /* --- Skills: 2 columns, balanced tags --- */
             #skills .grid {
                 grid-template-columns: 1fr 1fr !important;
-                gap: 6px !important;
+                gap: 8px !important;
             }
-            #skills .card { padding: 8px !important; }
-            #skills .card h3 { font-size: 0.7rem !important; margin-bottom: 6px !important; }
-            #skills .card div[style*="gap: 3px"] { gap: 2px !important; }
-            .skill-icon-tag { font-size: 0.5rem !important; padding: 3px 5px !important; gap: 3px !important; border-radius: 5px !important; }
-            .skill-icon-tag img, .skill-icon-tag svg { width: 12px !important; height: 12px !important; }
-            .skill-tag { font-size: 0.48rem !important; padding: 2px 5px !important; }
-            #skills .card div[style*="flex-wrap"] { gap: 3px !important; }
+            #skills .card { padding: 10px !important; }
+            #skills .card h3 { font-size: 0.75rem !important; margin-bottom: 8px !important; }
+            .skill-icon-tag { font-size: 0.58rem !important; padding: 4px 7px !important; gap: 4px !important; border-radius: 6px !important; }
+            .skill-icon-tag img, .skill-icon-tag svg { width: 14px !important; height: 14px !important; }
+            .skill-tag { font-size: 0.55rem !important; padding: 3px 7px !important; }
+            #skills .card div[style*="flex-wrap"] { gap: 4px !important; }
             #skills .card div[style*="width: 36px"],
             #skills .card div[style*="width: 38px"],
-            #skills .card div[style*="width: 40px"] { width: 22px !important; height: 22px !important; border-radius: 6px !important; }
+            #skills .card div[style*="width: 40px"] { width: 26px !important; height: 26px !important; border-radius: 7px !important; }
             #skills .card div[style*="width: 36px"] svg,
             #skills .card div[style*="width: 38px"] svg,
-            #skills .card div[style*="width: 40px"] svg { width: 12px !important; height: 12px !important; }
+            #skills .card div[style*="width: 40px"] svg { width: 14px !important; height: 14px !important; }
 
             /* --- Projects: 2 columns --- */
             #projects .grid {
