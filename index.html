@@ -1641,10 +1641,7 @@
             .award-badge { font-size: 0.7rem !important; padding: 4px 8px !important; }
 
             /* --- Cards: max-width so they don't go full-bleed --- */
-            .card, .contact-card, .service-tier, .value-card { max-width: 92vw !important; margin-left: auto !important; margin-right: auto !important; }
-
-            /* --- Language cards inside About --- */
-            #about .card { max-width: 88vw !important; }
+            .card, .contact-card, .value-card { max-width: 92vw !important; margin-left: auto !important; margin-right: auto !important; }
 
             /* --- Section dividers --- */
             .section-divider { margin: 0 !important; }
@@ -1674,11 +1671,88 @@
             .chat-quick-btns { padding: 0 10px 8px !important; gap: 4px !important; }
             .chat-quick-btn { font-size: 0.65rem !important; padding: 4px 8px !important; }
 
-            /* --- Grids: single column on mobile --- */
-            .grid-cols-2, .grid-cols-3, .grid-cols-4,
-            [style*="grid-template-columns: repeat(2"],
-            [style*="grid-template-columns: repeat(3"],
-            [style*="grid-template-columns: repeat(4"] {
+            /* --- About: Languages + Available side by side --- */
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 .card {
+                padding: 12px !important;
+                max-width: 100% !important;
+            }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 h3 { font-size: 0.8rem !important; }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 .font-semibold { font-size: 0.78rem !important; }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 div[style*="width: 36px"] { width: 28px !important; height: 28px !important; }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 div[style*="width: 34px"] { width: 26px !important; height: 26px !important; font-size: 0.65rem !important; }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 div[style*="font-size: 0.85rem"] { font-size: 0.72rem !important; }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 div[style*="font-size: 0.7rem"] { font-size: 0.6rem !important; }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 span[style*="font-size: 0.68rem"] { font-size: 0.58rem !important; padding: 1px 5px !important; }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 span[style*="font-size: 0.82rem"] { font-size: 0.7rem !important; }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 span[style*="font-size: 0.92rem"] { font-size: 0.78rem !important; }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 div[style*="padding: 10px 14px"] { padding: 6px 8px !important; gap: 8px !important; }
+            #about .flex.flex-col.gap-6.reveal.reveal-delay-2 svg[width="14"] { width: 11px !important; height: 11px !important; }
+
+            /* --- Services: horizontal scroll pricing --- */
+            #services .grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                -webkit-overflow-scrolling: touch !important;
+                gap: 12px !important;
+                padding-bottom: 8px !important;
+            }
+            #services .grid > .service-tier,
+            #services .grid > div {
+                min-width: 200px !important;
+                max-width: 220px !important;
+                flex-shrink: 0 !important;
+                scroll-snap-align: start !important;
+            }
+            .service-tier { max-width: none !important; margin: 0 !important; }
+
+            /* --- Contact: Reach Me + Available Now side by side --- */
+            #contact .flex.flex-col.gap-6.reveal.reveal-delay-3 {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+            #contact .flex.flex-col.gap-6.reveal.reveal-delay-3 .card {
+                padding: 14px !important;
+                max-width: 100% !important;
+            }
+            #contact .flex.flex-col.gap-6.reveal.reveal-delay-3 h3 { font-size: 0.82rem !important; }
+            #contact .flex.flex-col.gap-6.reveal.reveal-delay-3 a[style*="border-radius: 12px"] { padding: 8px 10px !important; }
+            #contact .flex.flex-col.gap-6.reveal.reveal-delay-3 a[style*="border-radius: 12px"] div[style*="width: 42px"] { width: 30px !important; height: 30px !important; }
+            #contact .flex.flex-col.gap-6.reveal.reveal-delay-3 a[style*="border-radius: 12px"] div[style*="font-size: 0.88rem"] { font-size: 0.72rem !important; }
+            #contact .flex.flex-col.gap-6.reveal.reveal-delay-3 a[style*="border-radius: 12px"] div[style*="font-size: 0.72rem"] { font-size: 0.6rem !important; }
+            #contact .flex.flex-col.gap-6.reveal.reveal-delay-3 a[style*="border-radius: 10px"][style*="flex: 1"] { padding: 8px !important; font-size: 0.7rem !important; }
+            #contact .flex.flex-col.gap-6.reveal.reveal-delay-3 span[style*="font-size: 0.75rem"] { font-size: 0.62rem !important; padding: 3px 8px !important; }
+
+            /* --- Why Work With Me: 2x2 grid --- */
+            .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+            .value-card { max-width: 100% !important; margin: 0 !important; }
+
+            /* --- Skills: 2 columns --- */
+            #skills .grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+
+            /* --- Projects: 2 columns --- */
+            #projects .grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+            #projects .project-card { min-height: auto !important; }
+            #projects .project-card[style*="grid-column: span"] { grid-column: span 1 !important; }
+
+            /* --- Default grids that SHOULD be single column --- */
+            #experience .grid-cols-2, #experience .grid-cols-3,
+            #education .grid-cols-2, #education .grid-cols-3 {
                 grid-template-columns: 1fr !important;
             }
         }
